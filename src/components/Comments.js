@@ -7,9 +7,9 @@ import CreateComment from './CreateComment'
 
 export class Comments extends Component {
   hasMoreComments () {
-    const commentCount = this.props.data._allCommentsMeta.count
+    const totalComments = this.props.data._allCommentsMeta.count
     const loadedComments = this.props.data.allComments.length
-    return loadedComments < commentCount
+    return loadedComments < totalComments
   }
 
   render () {
@@ -23,6 +23,8 @@ export class Comments extends Component {
         </span>
       )
     }
+    const totalComments = this.props.data._allCommentsMeta.count
+    const loadedComments = this.props.data.allComments.length
     return (
       <div>
         <h1>Comments</h1>
@@ -36,7 +38,12 @@ export class Comments extends Component {
         </ul>
         {
           this.hasMoreComments()
-            ? <button onClick={this.props.loadMore}>Load More</button>
+            ? (
+              <div>
+                {loadedComments} of {totalComments} comments<br />
+                <button onClick={this.props.loadMore}>Load More</button>
+              </div>
+            )
             : null
         }
       </div>

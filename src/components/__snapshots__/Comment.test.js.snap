@@ -26,6 +26,9 @@ exports[`Comment component should render the data 1`] = `
   <Apollo(Replies)
     to="commentId"
   />
+  <Apollo(Apollo(CreateReply))
+    to="commentId"
+  />
 </li>
 `;
 

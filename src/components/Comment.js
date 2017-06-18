@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
+import CreateReply from './CreateReply'
 import RelativeDate from './RelativeDate'
 import Replies from './Replies'
 
@@ -37,6 +38,7 @@ export class Comment extends Component {
       <li>
         {text} by {name} <RelativeDate value={createdAt} />
         <Replies to={this.props.id} />
+        <CreateReply to={this.props.id} />
       </li>
     )
   }

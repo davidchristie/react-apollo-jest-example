@@ -48,6 +48,9 @@ export class CreateReply extends Component {
   }
 
   render () {
+    if (!this.props.data.user) {
+      return null
+    }
     if (!this.state.show) {
       return <button onClick={this.show}>Reply</button>
     }

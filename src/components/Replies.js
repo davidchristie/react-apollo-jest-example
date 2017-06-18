@@ -4,11 +4,18 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
 import Comment from './Comment'
-import CreateReply from './CreateReply'
 
 export class Replies extends Component {
   static propTypes = {
     to: PropTypes.string.isRequired
+  }
+
+  constructor (props) {
+    super(props)
+    this.show = this.show.bind(this)
+    this.state = {
+      show: false
+    }
   }
 
   render () {
@@ -22,6 +29,13 @@ export class Replies extends Component {
         </span>
       )
     }
+    if (this.props.data.Comment.replies.length === 0) {
+      return null
+    }
+    if (!this.state.show) {
+      const count = this.props.data.Comment.replies.length
+      return <button onClick={this.show}>{count} Replies</button>
+    }
     return (
       <span>
         <ul>
@@ -31,9 +45,14 @@ export class Replies extends Component {
             })
           }
         </ul>
-        <CreateReply to={this.props.to} />
       </span>
     )
+  }
+
+  show () {
+    this.setState({
+      show: true
+    })
   }
 }
 
@@ -53,6 +72,7 @@ export const withData = graphql(
   {
     options: props => ({
       variables: {
+        first: 8,
         id: props.to
       }
     })

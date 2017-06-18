@@ -78,6 +78,7 @@ export const withData = compose(
             filter: {
               replyTo: null
             },
+            first: 8,
             orderBy: 'createdAt_DESC'
           }
           const data = proxy.readQuery({query, variables})

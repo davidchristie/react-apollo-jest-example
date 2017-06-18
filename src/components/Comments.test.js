@@ -12,6 +12,10 @@ import CommentsContainer, {
 } from './Comments'
 
 const data = {
+  _allCommentsMeta: {
+    __typename: '_QueryMeta',
+    count: 1
+  },
   allComments: [
     {
       __typename: 'Comment',
@@ -28,6 +32,7 @@ const variables = {
   filter: {
     replyTo: null
   },
+  first: 8,
   orderBy: 'createdAt_DESC'
 }
 const mocks = [

@@ -19,7 +19,7 @@ exports[`Comments component should render the data 1`] = `
   <h1>
     Comments
   </h1>
-  <Apollo(Apollo(Comment)) />
+  <Apollo(Apollo(CreateComment)) />
   <ul>
     <Apollo(Comment)
       id="commentId"
@@ -29,8 +29,11 @@ exports[`Comments component should render the data 1`] = `
 `;
 
 exports[`Comments query should match expected shape 1`] = `
-"query Comments($filter: CommentFilter!, $orderBy: CommentOrderBy!) {
-  allComments(filter: $filter, orderBy: $orderBy) {
+"query Comments($filter: CommentFilter!, $first: Int!, $orderBy: CommentOrderBy!, $skip: Int) {
+  _allCommentsMeta(filter: $filter) {
+    count
+  }
+  allComments(filter: $filter, first: $first, orderBy: $orderBy, skip: $skip) {
     id
   }
   user {

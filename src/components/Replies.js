@@ -4,10 +4,11 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
 import Comment from './Comment'
+import CreateReply from './CreateReply'
 
 export class Replies extends Component {
   static propTypes = {
-    id: PropTypes.string.isRequired
+    to: PropTypes.string.isRequired
   }
 
   render () {
@@ -22,13 +23,16 @@ export class Replies extends Component {
       )
     }
     return (
-      <ul>
-        {
-          this.props.data.Comment.replies.map((reply, index) => {
-            return <Comment id={reply.id} key={index} />
-          })
-        }
-      </ul>
+      <span>
+        <ul>
+          {
+            this.props.data.Comment.replies.map((reply, index) => {
+              return <Comment id={reply.id} key={index} />
+            })
+          }
+        </ul>
+        <CreateReply to={this.props.to} />
+      </span>
     )
   }
 }
@@ -49,7 +53,7 @@ export const withData = graphql(
   {
     options: props => ({
       variables: {
-        id: props.id
+        id: props.to
       }
     })
   }

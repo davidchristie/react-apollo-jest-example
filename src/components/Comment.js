@@ -36,7 +36,7 @@ export class Comment extends Component {
     return (
       <li>
         {text} by {name} <RelativeDate value={createdAt} />
-        <Replies id={this.props.id} />
+        <Replies to={this.props.id} />
       </li>
     )
   }

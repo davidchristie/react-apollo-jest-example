@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
+import RelativeDate from './RelativeDate'
 import Replies from './Replies'
 
 export class Comment extends Component {
@@ -21,9 +22,21 @@ export class Comment extends Component {
         </li>
       )
     }
+    const {
+      data: {
+        Comment: {
+          createdAt,
+          createdBy: {
+            name
+          },
+          text
+        }
+      }
+    } = this.props
     return (
       <li>
-        {this.props.data.Comment.text} <Replies id={this.props.id} />
+        {text} by {name} <RelativeDate value={createdAt} />
+        <Replies id={this.props.id} />
       </li>
     )
   }
@@ -35,6 +48,7 @@ export const QUERY = gql`
       createdAt
       createdBy {
         id
+        name
       }
       id
       text

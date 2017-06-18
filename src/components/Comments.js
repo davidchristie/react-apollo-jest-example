@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
+import { compose, graphql } from 'react-apollo'
 
 import Comment from './Comment'
 import CreateComment from './CreateComment'
@@ -34,8 +34,8 @@ export class Comments extends Component {
 }
 
 export const QUERY = gql`
-  query Comments($filter: CommentFilter!) {
-    allComments(filter: $filter) {
+  query Comments($filter: CommentFilter!, $orderBy: CommentOrderBy!) {
+    allComments(filter: $filter, orderBy: $orderBy) {
       id
     }
     user {
@@ -44,17 +44,20 @@ export const QUERY = gql`
   }
 `
 
-export const withData = graphql(
-  QUERY,
-  {
-    options: props => ({
-      variables: {
-        filter: {
-          replyTo: null
+export const withData = compose(
+  graphql(
+    QUERY,
+    {
+      options: props => ({
+        variables: {
+          filter: {
+            replyTo: null
+          },
+          orderBy: 'createdAt_DESC'
         }
-      }
-    })
-  }
+      })
+    }
+  )
 )
 
 export default withData(Comments)

@@ -17,13 +17,18 @@ const data = {
       __typename: 'Comment',
       id: 'commentId'
     }
-  ]
+  ],
+  user: {
+    __typename: 'User',
+    id: 'userId'
+  }
 }
 const query = addTypenameToDocument(QUERY)
 const variables = {
   filter: {
     replyTo: null
-  }
+  },
+  orderBy: 'createdAt_DESC'
 }
 const mocks = [
   {

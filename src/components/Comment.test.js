@@ -14,10 +14,11 @@ import CommentContainer, {
 const data = {
   Comment: {
     __typename: 'Comment',
-    createdAt: 'sometime',
+    createdAt: 'createdAt',
     createdBy: {
       __typename: 'User',
-      id: 'userId'
+      id: 'userId',
+      name: 'userName'
     },
     id: 'commentId',
     text: 'Comment text.'

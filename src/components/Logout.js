@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo'
 
 import clearToken from '../authentication/clearToken'
 
-export class Header extends Component {
+export class Logout extends Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -23,7 +23,7 @@ export class Header extends Component {
 }
 
 export const QUERY = gql`
-  query Header {
+  query Logout {
     user {
       id
     }
@@ -32,4 +32,4 @@ export const QUERY = gql`
 
 export const withData = graphql(QUERY)
 
-export default withData(Header)
+export default withData(Logout)

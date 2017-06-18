@@ -17,7 +17,12 @@ exports[`Comment component should render an error 1`] = `
 exports[`Comment component should render the data 1`] = `
 <li>
   Comment text.
+   by 
+  userName
    
+  <RelativeDate
+    value="createdAt"
+  />
   <Apollo(Replies)
     id="commentId"
   />
@@ -30,6 +35,7 @@ exports[`Comment query should match expected shape 1`] = `
     createdAt
     createdBy {
       id
+      name
     }
     id
     text

@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "apollo-client": "^1.4.2",
+    "graphql-tag": "^0.1.15",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
+    "eslint-plugin-react": "^7.1.0",
+    "graphql": "^0.10.1",
+    "react-scripts": "^1.0.7",
+    "react-test-renderer": "^15.6.1",
+    "standard": "^10.0.2"
+  },
+  "name": "react-apollo-jest-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom --coverage=true"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "parser": "babel-eslint"
+  }
+}

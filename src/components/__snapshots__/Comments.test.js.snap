@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments component should render a loading state 1`] = `
+<span>
+  Loading...
+</span>
+`;
+
+exports[`Comments component should render an error 1`] = `
+<span>
+  Error
+  : 
+  message
+</span>
+`;
+
+exports[`Comments component should render the data 1`] = `
+<div>
+  <h1>
+    Comments
+  </h1>
+  <Apollo(Comment) />
+  <ul>
+    <Apollo(Comment)
+      id="commentId"
+    />
+  </ul>
+</div>
+`;
+
+exports[`Comments query should match expected shape 1`] = `
+"query Comments($filter: CommentFilter!) {
+  allComments(filter: $filter) {
+    id
+  }
+}
+"
+`;

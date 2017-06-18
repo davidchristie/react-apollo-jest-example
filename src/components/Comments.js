@@ -20,7 +20,7 @@ export class Comments extends Component {
     return (
       <div>
         <h1>Comments</h1>
-        <CreateComment />
+        {this.props.data.user ? <CreateComment /> : null}
         <ul>
           {
             this.props.data.allComments.map((comment, index) => (
@@ -36,6 +36,9 @@ export class Comments extends Component {
 export const QUERY = gql`
   query Comments($filter: CommentFilter!) {
     allComments(filter: $filter) {
+      id
+    }
+    user {
       id
     }
   }

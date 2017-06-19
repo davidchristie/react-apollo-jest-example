@@ -5,6 +5,7 @@ import { Button } from 'reactstrap'
 
 import Comment from './Comment'
 import CreateComment from './CreateComment'
+import Fade from './Fade'
 
 export class Comments extends Component {
   hasMoreComments () {
@@ -15,7 +16,7 @@ export class Comments extends Component {
 
   render () {
     if (this.props.data.loading) {
-      return <span>Loading...</span>
+      return null
     }
     if (this.props.data.error) {
       return (
@@ -27,27 +28,28 @@ export class Comments extends Component {
     const totalComments = this.props.data._allCommentsMeta.count
     const loadedComments = this.props.data.allComments.length
     return (
-      <div>
-        <h1>Comments</h1>
-        {this.props.data.user ? <CreateComment /> : null}
-        <ul>
+      <Fade>
+        <div>
+          <h1>Comments</h1>
+          {this.props.data.user ? <CreateComment /> : null}
+          <br />
           {
             this.props.data.allComments.map((comment, index) => (
               <Comment id={comment.id} key={index} />
             ))
           }
-        </ul>
-        {
-          this.hasMoreComments()
-            ? (
-              <div>
-                {loadedComments} of {totalComments} comments<br />
-                <Button onClick={this.props.loadMore}>Load More</Button>
-              </div>
-            )
-            : null
-        }
-      </div>
+          {
+            this.hasMoreComments()
+              ? (
+                <div>
+                  {loadedComments} of {totalComments} comments<br />
+                  <Button onClick={this.props.loadMore}>Load More</Button>
+                </div>
+              )
+              : null
+          }
+        </div>
+      </Fade>
     )
   }
 }

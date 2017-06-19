@@ -5,11 +5,7 @@ import { print } from 'graphql/language/printer'
 import React, { Component } from 'react'
 import { MockedProvider } from 'react-apollo/lib/test-utils'
 
-import CommentsContainer, {
-  Comments,
-  QUERY,
-  withData
-} from './Comments'
+import { Comments, QUERY, withData } from './Comments'
 
 const data = {
   _allCommentsMeta: {
@@ -68,16 +64,6 @@ describe('Comments component', () => {
       <Comments data={{...data, loading: false}} id='commentId' />
     )
     expect(toJson(output)).toMatchSnapshot()
-  })
-})
-
-describe('Comments container', () => {
-  it('renders without crashing', () => {
-    mount(
-      <MockedProvider mocks={mocks}>
-        <CommentsContainer id='commentId' />
-      </MockedProvider>
-    )
   })
 })
 

@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo'
 import { Media } from 'reactstrap'
 
 import CreateReply from './CreateReply'
+import Fade from './Fade'
 import RelativeDate from './RelativeDate'
 import Replies from './Replies'
 
@@ -15,7 +16,7 @@ export class Comment extends Component {
 
   render () {
     if (this.props.data.loading) {
-      return <Media>Loading...</Media>
+      return null
     }
     if (this.props.data.error) {
       return (
@@ -37,24 +38,26 @@ export class Comment extends Component {
       }
     } = this.props
     return (
-      <Media>
-        <Media left>
-          <Media alt={`${name} profile`} className='rounded-circle' object src={picture} width={50} />
+      <Fade>
+        <Media>
+          <Media left>
+            <Media alt={`${name} profile`} className='rounded-circle' object src={picture} width={50} />
+          </Media>
+          <Media body>
+            <Media heading>
+              {name}
+            </Media>
+            <Media>
+              {text}
+            </Media>
+            <Media bottom>
+              <RelativeDate value={createdAt} />
+            </Media>
+            <CreateReply to={this.props.id} />
+            <Replies to={this.props.id} />
+          </Media>
         </Media>
-        <Media body>
-          <Media heading>
-            {name}
-          </Media>
-          <Media>
-            {text}
-          </Media>
-          <Media bottom>
-            <RelativeDate value={createdAt} />
-          </Media>
-          <CreateReply to={this.props.id} />
-          <Replies to={this.props.id} />
-        </Media>
-      </Media>
+      </Fade>
     )
   }
 }

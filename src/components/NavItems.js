@@ -8,18 +8,14 @@ import Profile from './Profile'
 export class NavItems extends Component {
   render () {
     if (this.props.data.loading) {
-      return <span>Loading...</span>
+      return null
     }
     if (this.props.data.error) {
       return (
         <span>this.props.data.error.name: this.props.data.error.message</span>
       )
     }
-    if (this.props.data.user) {
-      return <Profile />
-    } else {
-      return <Login />
-    }
+    return this.props.data.user ? <Profile /> : <Login />
   }
 }
 

@@ -8,6 +8,7 @@ import {
   DropdownToggle
 } from 'reactstrap'
 
+import Fade from './Fade'
 import Login from './Login'
 import Logout from './Logout'
 
@@ -22,7 +23,7 @@ export class Profile extends Component {
 
   render () {
     if (this.props.data.loading) {
-      return <span>Loading...</span>
+      return null
     }
     if (this.props.data.error) {
       return (
@@ -31,21 +32,23 @@ export class Profile extends Component {
     }
     if (this.props.data.user) {
       return (
-        <Dropdown isOpen={this.state.open} toggle={this.toggle}>
-          <DropdownToggle caret nav>
-            <img
-              alt='profile'
-              className='rounded-circle'
-              src={this.props.data.user.picture}
-              width={30}
-            />
-          </DropdownToggle>
-          <DropdownMenu right>
-            <DropdownItem header>{this.props.data.user.name}</DropdownItem>
-            <DropdownItem divider />
-            <Logout />
-          </DropdownMenu>
-        </Dropdown>
+        <Fade>
+          <Dropdown isOpen={this.state.open} toggle={this.toggle}>
+            <DropdownToggle caret nav>
+              <img
+                alt='profile'
+                className='rounded-circle'
+                src={this.props.data.user.picture}
+                width={30}
+              />
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem header>{this.props.data.user.name}</DropdownItem>
+              <DropdownItem divider />
+              <Logout />
+            </DropdownMenu>
+          </Dropdown>
+        </Fade>
       )
     } else {
       return <Login />

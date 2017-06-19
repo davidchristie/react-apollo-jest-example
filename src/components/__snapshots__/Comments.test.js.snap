@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comments component should render a loading state 1`] = `
-<span>
-  Loading...
-</span>
-`;
+exports[`Comments component should render a loading state 1`] = `null`;
 
 exports[`Comments component should render an error 1`] = `
 <span>
@@ -15,17 +11,18 @@ exports[`Comments component should render an error 1`] = `
 `;
 
 exports[`Comments component should render the data 1`] = `
-<div>
-  <h1>
-    Comments
-  </h1>
-  <Apollo(Apollo(CreateComment)) />
-  <ul>
+<Fade>
+  <div>
+    <h1>
+      Comments
+    </h1>
+    <Apollo(Apollo(CreateComment)) />
+    <br />
     <Apollo(Comment)
       id="commentId"
     />
-  </ul>
-</div>
+  </div>
+</Fade>
 `;
 
 exports[`Comments query should match expected shape 1`] = `

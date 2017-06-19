@@ -7,6 +7,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-transition-group": "^1.2.0",
     "reactstrap": "^4.6.2",
     "relative-date": "^1.1.3"
   },

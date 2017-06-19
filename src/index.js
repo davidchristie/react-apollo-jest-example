@@ -6,6 +6,7 @@ import { ApolloProvider } from 'react-apollo'
 import Comments from './components/Comments'
 import Layout from './components/Layout'
 import createApolloClient from './network/createApolloClient'
+import './theme/index.css'
 
 const client = createApolloClient()
 

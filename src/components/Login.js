@@ -5,6 +5,7 @@ import { compose, graphql } from 'react-apollo'
 import { Button, NavItem } from 'reactstrap'
 
 import setToken from '../authentication/setToken'
+import Fade from './Fade'
 
 const clientId = 'QyZoVQizggUxSbQwC5lgsfd3vdVfl0ZD'
 const domain = 'davidchristie.au.auth0.com'
@@ -54,16 +55,15 @@ class Login extends Component {
   }
 
   render () {
-    if (this.state.loading) {
-      return <span>Loading...</span>
-    }
-    const loading = this.props.data.loading
+    const loading = this.props.data.loading || this.state.loading
     return (
-      <NavItem>
-        <Button color='primary' disabled={loading} onClick={this.handleClick} outline>
-          Login
-        </Button>
-      </NavItem>
+      <Fade>
+        <NavItem>
+          <Button color='primary' disabled={loading} onClick={this.handleClick} outline>
+            Login
+          </Button>
+        </NavItem>
+      </Fade>
     )
   }
 }

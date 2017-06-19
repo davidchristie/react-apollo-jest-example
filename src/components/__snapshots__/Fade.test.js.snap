@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fade component should render correctly 1`] = `
+<Fade>
+  <Collapse
+    delay={
+      Object {
+        "hide": 350,
+        "show": 350,
+      }
+    }
+    isOpen={true}
+    onClosed={[Function]}
+    onOpened={[Function]}
+    tag="div"
+  >
+    <div
+      className="collapsing"
+      style={
+        Object {
+          "height": 0,
+        }
+      }
+    >
+      <CSSTransitionGroup
+        transitionAppear={true}
+        transitionAppearTimeout={1000}
+        transitionEnter={false}
+        transitionLeave={true}
+        transitionLeaveTimeout={1000}
+        transitionName="fade"
+      >
+        <TransitionGroup
+          childFactory={[Function]}
+          component="span"
+          transitionAppear={true}
+          transitionAppearTimeout={1000}
+          transitionEnter={false}
+          transitionLeave={true}
+          transitionLeaveTimeout={1000}
+          transitionName="fade"
+        >
+          <span />
+        </TransitionGroup>
+      </CSSTransitionGroup>
+    </div>
+  </Collapse>
+</Fade>
+`;

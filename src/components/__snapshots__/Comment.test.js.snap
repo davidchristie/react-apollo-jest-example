@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comment component should render a loading state 1`] = `
-<Media>
-  Loading...
-</Media>
-`;
+exports[`Comment component should render a loading state 1`] = `null`;
 
 exports[`Comment component should render an error 1`] = `
 <Media>
@@ -15,44 +11,46 @@ exports[`Comment component should render an error 1`] = `
 `;
 
 exports[`Comment component should render the data 1`] = `
-<Media>
-  <Media
-    left={true}
-  >
+<Fade>
+  <Media>
     <Media
-      alt="userName profile"
-      className="rounded-circle"
-      object={true}
-      src="userPicture"
-      width={50}
-    />
-  </Media>
-  <Media
-    body={true}
-  >
-    <Media
-      heading={true}
+      left={true}
     >
-      userName
-    </Media>
-    <Media>
-      Comment text.
-    </Media>
-    <Media
-      bottom={true}
-    >
-      <RelativeDate
-        value="createdAt"
+      <Media
+        alt="userName profile"
+        className="rounded-circle"
+        object={true}
+        src="userPicture"
+        width={50}
       />
     </Media>
-    <Apollo(Apollo(CreateReply))
-      to="commentId"
-    />
-    <Apollo(Replies)
-      to="commentId"
-    />
+    <Media
+      body={true}
+    >
+      <Media
+        heading={true}
+      >
+        userName
+      </Media>
+      <Media>
+        Comment text.
+      </Media>
+      <Media
+        bottom={true}
+      >
+        <RelativeDate
+          value="createdAt"
+        />
+      </Media>
+      <Apollo(Apollo(CreateReply))
+        to="commentId"
+      />
+      <Apollo(Replies)
+        to="commentId"
+      />
+    </Media>
   </Media>
-</Media>
+</Fade>
 `;
 
 exports[`Comment query should match expected shape 1`] = `

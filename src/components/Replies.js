@@ -12,7 +12,7 @@ export class Replies extends Component {
 
   render () {
     if (this.props.data.loading) {
-      return <span>Loading...</span>
+      return null
     }
     if (this.props.data.error) {
       return (

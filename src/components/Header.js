@@ -1,43 +1,40 @@
-import gql from 'graphql-tag'
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
+import {
+  Collapse,
+  Nav,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand
+} from 'reactstrap'
 
-import Login from './Login'
-import Profile from './Profile'
+import NavItems from './NavItems'
 
-export class Header extends Component {
+export default class Header extends Component {
+  constructor (props) {
+    super(props)
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      open: false
+    }
+  }
+
   render () {
-    if (this.props.data.loading) {
-      return <nav />
-    }
-    if (this.props.data.error) {
-      return (
-        <nav>this.props.data.error.name: this.props.data.error.message</nav>
-      )
-    }
-    if (this.props.data.user) {
-      return (
-        <nav>
-          <Profile />
-        </nav>
-      )
-    }
     return (
-      <nav>
-        <Login />
-      </nav>
+      <Navbar color='faded' light toggleable>
+        <NavbarToggler onClick={this.toggle} right />
+        <NavbarBrand>React Apollo Jest Example</NavbarBrand>
+        <Collapse isOpen={this.state.open} navbar>
+          <Nav className='ml-auto' navbar>
+            <NavItems />
+          </Nav>
+        </Collapse>
+      </Navbar>
     )
   }
-}
 
-export const QUERY = gql`
-  query Header {
-    user {
-      id
-    }
+  toggle () {
+    this.setState({
+      open: !this.state.open
+    })
   }
-`
-
-export const withData = graphql(QUERY)
-
-export default withData(Header)
+}

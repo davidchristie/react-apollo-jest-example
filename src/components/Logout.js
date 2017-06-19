@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+import { DropdownItem } from 'reactstrap'
 
 import clearToken from '../authentication/clearToken'
 
@@ -17,7 +18,9 @@ export class Logout extends Component {
 
   render () {
     return (
-      <button onClick={this.handleClick}>Logout</button>
+      <DropdownItem onClick={this.handleClick}>
+        Logout
+      </DropdownItem>
     )
   }
 }

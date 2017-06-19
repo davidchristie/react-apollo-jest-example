@@ -1,35 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Comment component should render a loading state 1`] = `
-<li>
+<Media>
   Loading...
-</li>
+</Media>
 `;
 
 exports[`Comment component should render an error 1`] = `
-<li>
+<Media>
   Error
   : 
   message
-</li>
+</Media>
 `;
 
 exports[`Comment component should render the data 1`] = `
-<li>
-  Comment text.
-   by 
-  userName
-   
-  <RelativeDate
-    value="createdAt"
-  />
-  <Apollo(Replies)
-    to="commentId"
-  />
-  <Apollo(Apollo(CreateReply))
-    to="commentId"
-  />
-</li>
+<Media>
+  <Media
+    left={true}
+  >
+    <Media
+      alt="userName profile"
+      className="rounded-circle"
+      object={true}
+      src="userPicture"
+      width={50}
+    />
+  </Media>
+  <Media
+    body={true}
+  >
+    <Media
+      heading={true}
+    >
+      userName
+    </Media>
+    <Media>
+      Comment text.
+    </Media>
+    <Media
+      bottom={true}
+    >
+      <RelativeDate
+        value="createdAt"
+      />
+    </Media>
+    <Apollo(Apollo(CreateReply))
+      to="commentId"
+    />
+    <Apollo(Replies)
+      to="commentId"
+    />
+  </Media>
+</Media>
 `;
 
 exports[`Comment query should match expected shape 1`] = `
@@ -39,6 +62,7 @@ exports[`Comment query should match expected shape 1`] = `
     createdBy {
       id
       name
+      picture
     }
     id
     text

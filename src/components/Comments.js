@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
+import { Button } from 'reactstrap'
 
 import Comment from './Comment'
 import CreateComment from './CreateComment'
@@ -41,7 +42,7 @@ export class Comments extends Component {
             ? (
               <div>
                 {loadedComments} of {totalComments} comments<br />
-                <button onClick={this.props.loadMore}>Load More</button>
+                <Button onClick={this.props.loadMore}>Load More</Button>
               </div>
             )
             : null

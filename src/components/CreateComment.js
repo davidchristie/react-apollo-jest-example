@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
+import { Button, Card, CardBlock, Form, FormGroup, Input } from 'reactstrap'
 
 import { QUERY as COMMENTS_QUERY } from './Comments'
 
@@ -31,15 +32,23 @@ export class CreateComment extends Component {
   }
 
   render () {
+    const disabled = this.state.value.length === 0
     return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea
-          onChange={this.handleChange}
-          placeholder='Post a comment'
-          value={this.state.value}
-        />
-        <button type='submit'>Submit</button>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Card>
+          <CardBlock>
+            <FormGroup>
+              <Input
+                onChange={this.handleChange}
+                placeholder='Post a comment'
+                type='textarea'
+                value={this.state.value}
+              />
+            </FormGroup>
+            <Button disabled={disabled} type='submit'>Submit</Button>
+          </CardBlock>
+        </Card>
+      </Form>
     )
   }
 }

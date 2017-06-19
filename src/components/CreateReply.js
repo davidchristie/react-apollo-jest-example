@@ -2,6 +2,7 @@ import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
+import { Button, Card, CardBlock, Form, FormGroup, Input } from 'reactstrap'
 
 import { QUERY as REPLIES_QUERY } from './Replies'
 
@@ -52,19 +53,27 @@ export class CreateReply extends Component {
       return null
     }
     if (!this.state.show) {
-      return <button onClick={this.show}>Reply</button>
+      return <Button onClick={this.show}>Reply</Button>
     }
+    const disabled = this.state.value.length === 0
     return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea
-          autoFocus
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          placeholder='Post a reply'
-          value={this.state.value}
-        />
-        <button type='submit'>Submit</button>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Card>
+          <CardBlock>
+            <FormGroup>
+              <Input
+                autoFocus
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
+                placeholder='Post a reply'
+                type='textarea'
+                value={this.state.value}
+              />
+            </FormGroup>
+            <Button disabled={disabled} type='submit'>Submit</Button>
+          </CardBlock>
+        </Card>
+      </Form>
     )
   }
 

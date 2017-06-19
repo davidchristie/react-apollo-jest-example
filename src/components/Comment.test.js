@@ -18,7 +18,8 @@ const data = {
     createdBy: {
       __typename: 'User',
       id: 'userId',
-      name: 'userName'
+      name: 'userName',
+      picture: 'userPicture'
     },
     id: 'commentId',
     text: 'Comment text.'

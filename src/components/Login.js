@@ -2,6 +2,7 @@ import Auth0Lock from 'auth0-lock'
 import gql from 'graphql-tag'
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
+import { Button, NavItem } from 'reactstrap'
 
 import setToken from '../authentication/setToken'
 
@@ -17,7 +18,7 @@ class Login extends Component {
       lock.getUserInfo(result.accessToken, (error, profile) => {
         if (error) return console.log(error.message)
         this.setState({
-          processing: true
+          loading: true
         })
         setToken(result.idToken)
         this.props.data.refetch()
@@ -44,7 +45,7 @@ class Login extends Component {
     this.lock = lock
     this.handleClick = this.handleClick.bind(this)
     this.state = {
-      processing: false
+      loading: false
     }
   }
 
@@ -53,12 +54,16 @@ class Login extends Component {
   }
 
   render () {
-    if (this.state.processing) {
-      return <span>Processing...</span>
+    if (this.state.loading) {
+      return <span>Loading...</span>
     }
     const loading = this.props.data.loading
     return (
-      <button disabled={loading} onClick={this.handleClick}>Login</button>
+      <NavItem>
+        <Button color='primary' disabled={loading} onClick={this.handleClick} outline>
+          Login
+        </Button>
+      </NavItem>
     )
   }
 }

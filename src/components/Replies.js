@@ -10,14 +10,6 @@ export class Replies extends Component {
     to: PropTypes.string.isRequired
   }
 
-  constructor (props) {
-    super(props)
-    this.show = this.show.bind(this)
-    this.state = {
-      show: false
-    }
-  }
-
   render () {
     if (this.props.data.loading) {
       return <span>Loading...</span>
@@ -29,30 +21,15 @@ export class Replies extends Component {
         </span>
       )
     }
-    if (this.props.data.Comment.replies.length === 0) {
-      return null
-    }
-    if (!this.state.show) {
-      const count = this.props.data.Comment.replies.length
-      return <button onClick={this.show}>{count} Replies</button>
-    }
     return (
-      <span>
-        <ul>
-          {
-            this.props.data.Comment.replies.map((reply, index) => {
-              return <Comment id={reply.id} key={index} />
-            })
-          }
-        </ul>
-      </span>
+      <div>
+        {
+          this.props.data.Comment.replies.map((reply, index) => {
+            return <Comment id={reply.id} key={index} />
+          })
+        }
+      </div>
     )
-  }
-
-  show () {
-    this.setState({
-      show: true
-    })
   }
 }
 

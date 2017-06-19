@@ -1,10 +1,25 @@
 import gql from 'graphql-tag'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle
+} from 'reactstrap'
 
+import Login from './Login'
 import Logout from './Logout'
 
 export class Profile extends Component {
+  constructor (props) {
+    super(props)
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      open: false
+    }
+  }
+
   render () {
     if (this.props.data.loading) {
       return <span>Loading...</span>
@@ -14,12 +29,33 @@ export class Profile extends Component {
         <span>this.props.data.error.name: this.props.data.error.message</span>
       )
     }
-    return (
-      <span>
-        <img alt='profile' src={this.props.data.user.picture} width={100} />
-        <Logout />
-      </span>
-    )
+    if (this.props.data.user) {
+      return (
+        <Dropdown isOpen={this.state.open} toggle={this.toggle}>
+          <DropdownToggle caret nav>
+            <img
+              alt='profile'
+              className='rounded-circle'
+              src={this.props.data.user.picture}
+              width={30}
+            />
+          </DropdownToggle>
+          <DropdownMenu right>
+            <DropdownItem header>{this.props.data.user.name}</DropdownItem>
+            <DropdownItem divider />
+            <Logout />
+          </DropdownMenu>
+        </Dropdown>
+      )
+    } else {
+      return <Login />
+    }
+  }
+
+  toggle () {
+    this.setState({
+      open: !this.state.open
+    })
   }
 }
 

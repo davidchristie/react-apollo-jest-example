@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container } from 'reactstrap'
 
 import Header from './Header'
 
@@ -7,7 +8,9 @@ export default class Layout extends Component {
     return (
       <div>
         <Header />
-        {this.props.children}
+        <Container>
+          {this.props.children}
+        </Container>
       </div>
     )
   }

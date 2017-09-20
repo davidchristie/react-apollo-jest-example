@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders closed state correctly 1`] = `
+<Navbar
+  color="faded"
+  light={true}
+  role="navigation"
+  tag="nav"
+  toggleable={true}
+>
+  <NavbarToggler
+    onClick={[Function]}
+    right={true}
+    tag="button"
+    type="button"
+  />
+  <NavbarBrand
+    tag="a"
+  >
+    React Apollo Jest Example
+  </NavbarBrand>
+  <Collapse
+    delay={
+      Object {
+        "hide": 350,
+        "show": 350,
+      }
+    }
+    isOpen={false}
+    navbar={true}
+    onClosed={[Function]}
+    onOpened={[Function]}
+    tag="div"
+  >
+    <Nav
+      className="ml-auto"
+      navbar={true}
+      tag="ul"
+    >
+      <Apollo(NavItems) />
+    </Nav>
+  </Collapse>
+</Navbar>
+`;
+
+exports[`Header renders open state correctly 1`] = `
+<Navbar
+  color="faded"
+  light={true}
+  role="navigation"
+  tag="nav"
+  toggleable={true}
+>
+  <NavbarToggler
+    onClick={[Function]}
+    right={true}
+    tag="button"
+    type="button"
+  />
+  <NavbarBrand
+    tag="a"
+  >
+    React Apollo Jest Example
+  </NavbarBrand>
+  <Collapse
+    delay={
+      Object {
+        "hide": 350,
+        "show": 350,
+      }
+    }
+    isOpen={true}
+    navbar={true}
+    onClosed={[Function]}
+    onOpened={[Function]}
+    tag="div"
+  >
+    <Nav
+      className="ml-auto"
+      navbar={true}
+      tag="ul"
+    >
+      <Apollo(NavItems) />
+    </Nav>
+  </Collapse>
+</Navbar>
+`;

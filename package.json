@@ -25,9 +25,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "coverage": "react-scripts test --env=jsdom --coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage=true"
+    "test": "react-scripts test --env=jsdom"
   },
   "standard": {
     "env": [

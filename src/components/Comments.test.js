@@ -40,6 +40,26 @@ const mocks = [
     result: {
       data
     }
+  },
+  {
+    request: {
+      query,
+      variables: {
+        ...variables,
+        skip: 1
+      }
+    },
+    result: {
+      _allCommentsMeta: {
+        __typename: '_QueryMeta',
+        count: 1
+      },
+      allComments: [],
+      user: {
+        __typename: 'User',
+        id: 'userId'
+      }
+    }
   }
 ]
 const error = new Error('message')
@@ -111,6 +131,34 @@ describe('Comments enhancer', () => {
       componentWillReceiveProps (props) {
         expect(props.data.loading).toBe(false)
         expect(props.data).toMatchObject(data)
+        done()
+      }
+
+      render () {
+        return null
+      }
+    }
+    const ContainerWithData = withData(Container)
+    mount(
+      <MockedProvider mocks={mocks}>
+        <ContainerWithData id='commentId' />
+      </MockedProvider>
+    )
+  })
+
+  it('fetches more comments without crashing', done => {
+    class Container extends Component {
+      componentWillReceiveProps (props) {
+        // props.loadMore()
+        //   .then(() => {
+        //     console.log('success')
+        //     done()
+        //   })
+        //   .catch(error => {
+        //     console.log(error)
+        //     done()
+        //   })
+        props.loadMore()
         done()
       }
 

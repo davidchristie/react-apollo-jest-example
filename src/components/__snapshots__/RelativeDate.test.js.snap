@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelativeDate component should render correctly 1`] = `
+<RelativeDate
+  value="Wed Sep 20 2017 17:33:57 GMT+1200 (NZST)"
+>
+  <span>
+    just now
+  </span>
+</RelativeDate>
+`;
